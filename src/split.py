@@ -3,7 +3,7 @@ import random
 from pathlib import Path
 
 IN_PATH = Path("data/processed/cleaned.jsonl")
-OUT_PATH = Path("data/processed/split.json")
+OUT_PATH = Path("data/split.json")
 SEED = 42
 
 

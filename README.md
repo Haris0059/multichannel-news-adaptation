@@ -17,3 +17,5 @@ pre-commit install
 
 Activate the venv again in every new terminal.
 
+Command to run to fetch,
+
