@@ -26,14 +26,14 @@ def main():
     assert len(articles) == total, f"got {len(articles)} of {total}"
 
     today = date.today().isoformat()
+    out_path = OUT_DIR / f"articles_{today}.json"
 
-    out_file = OUT_DIR / f"articles_{today}.json"
-
-    with open(out_file, "w", encoding="utf-8") as f:
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    with out_path.open("w", encoding="utf-8") as f:
         json.dump(articles, f, ensure_ascii=False, indent=2)
-    print(f"Saved {len(articles)} articles to {out_file}")
+
+    print(f"saved {len(articles)} articles to {out_path}")
 
 
 if __name__ == "__main__":
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
     main()

@@ -3,6 +3,9 @@ import json
 import re
 from pathlib import Path
 
+RAW_DIR = Path("data/raw")
+OUT_PATH = Path("data/processed/cleaned.jsonl")
+
 
 def clean_html(raw):
     text = re.sub(r"</p>|<br\s*/?>|</li>|</h\d>", "\n", raw)
@@ -14,14 +17,12 @@ def clean_html(raw):
 
 
 def main():
-    input_path = Path("data/raw/articles_2026-11-02.json")
-    output_path = Path("data/processed/cleaned.jsonl")
+    in_path = max(RAW_DIR.glob("articles_*.json"))
+    with in_path.open("r", encoding="utf-8") as f:
+        data = json.load(f)
 
-    with input_path.open("r", encoding="utf-8") as file:
-        data = json.load(file)
-
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    with output_path.open("w", encoding="utf-8") as out:
+    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with OUT_PATH.open("w", encoding="utf-8") as f:
         for article in data:
             a = article["attributes"]
 
@@ -31,9 +32,9 @@ def main():
                 "date": a["Date"],
                 "content": clean_html(a["Content"]),
             }
-            out.write(json.dumps(record, ensure_ascii=False) + "\n")
+            f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
-        print(f"wrote {len(data)} articles to {output_path}")
+    print(f"saved {len(data)} articles to {OUT_PATH}")
 
 
 if __name__ == "__main__":
