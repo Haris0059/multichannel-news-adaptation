@@ -12,6 +12,7 @@
 ## Fadil Masnopita
 - 24.10.2026 - Divided the responsibilities as equally as possible
 - 03.11.2026 - Drafted the labelling rules for fact spans (`docs/labelling_rules.md`, applied with AI assistance)
+- 03.11.2026 - Set up the annotator pilot: sentence sample, Label Studio config, LLM labelling and agreement scoring (applied with AI assistance)
 - 03.11.2026 - Fixed the file encoding in `src/split.py` so it runs on Windows
 
 ## Abdurrahman Beširović
