@@ -11,6 +11,7 @@
 
 ## Fadil Masnopita
 - 24.10.2026 - Divided the responsibilities as equally as possible
+- 03.11.2026 - Drafted the labelling rules for fact spans (`docs/labelling_rules.md`, applied with AI assistance)
 
 ## Abdurrahman Beširović
 -
