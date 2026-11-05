@@ -11,6 +11,7 @@
 - 03.11.2026 - Wrote the article-level train/val/test split (`src/split.py`, `data/split.json`)
 - 03.11.2026 - Wrote the data analysis script and charts (`src/analyze.py`, `results/figures/`)
 - 03.11.2026 - Added shared Claude Code skills for the team (commit message, PR description, ADHD mode)
+- 05.11.2026 - Reviewed Fadil's LLM labelling PR (#2): set the annotator models and asked to cut the pilot (reviewed with AI assistance)
 
 ## Fadil Masnopita
 - 24.10.2026 - Divided the responsibilities as equally as possible
