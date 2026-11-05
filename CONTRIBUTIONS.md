@@ -8,6 +8,9 @@
 - 02.11.2026 - Wrote the article fetch script (`src/fetch_articles.py`)
 - 03.11.2026 - Wrote the HTML cleaning script (`src/clean.py`)
 - 03.11.2026 - Unified the style of both scripts; clean script reads the newest raw file (applied with AI assistance)
+- 03.11.2026 - Wrote the article-level train/val/test split (`src/split.py`, `data/split.json`)
+- 03.11.2026 - Wrote the data analysis script and charts (`src/analyze.py`, `results/figures/`)
+- 03.11.2026 - Added shared Claude Code skills for the team (commit message, PR description, ADHD mode)
 
 ## Fadil Masnopita
 - 24.10.2026 - Divided the responsibilities as equally as possible
