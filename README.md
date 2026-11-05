@@ -19,32 +19,7 @@ Activate the venv again in every new terminal.
 
 Command to run to fetch,
 
-## Annotator pilot
+## LLM labelling
 
-Before LLMs pre-label the NER training data, we pick the models by scoring them against our own labels on 50 train-split sentences. The rules are in `docs/labelling_rules.md`. All files under `data/processed/agreement/` are gitignored because they contain article text.
-
-1. Sample 50 sentences, one per train article, half of them with a digit:
-
-```bash
-python src/sample_sentences.py   # sentences.jsonl and label_studio_tasks.json
-```
-
-2. Each of us labels them by hand in Label Studio (`pip install label-studio`, then `label-studio start`). Use `labelstudio/fact_spans.xml` as the labelling config and import `label_studio_tasks.json`. Export as JSON to `data/processed/agreement/human/<name>.json`. After we resolve our disagreements, export the agreed labels as `human/gold.json`.
-
-3. Label the same sentences with the candidate models through Haris's API. Put the key in a `.env` file in the repo root, one line `HARIS_AI_KEY=sk-hr-...`. `.env` is gitignored; never commit the key.
-
-```bash
-python src/llm_label.py                               # all candidates in MODELS
-python src/llm_label.py anthropic/claude-opus-5-5     # or one model
-```
-
-Raw replies are saved per model in `data/processed/agreement/llm/`. If the quota runs out, run the command again later, and it continues where it stopped.
-
-4. Score everyone:
-
-```bash
-python src/agreement.py   # results/agreement_kappa.csv, results/annotator_scores.csv
-```
-
-The script computes token-level Cohen's kappa for every pair of annotators, and span precision, recall and F1 per fact type against `gold.json`. Spans match exactly after leading and trailing punctuation is trimmed.
-
+Put Haris's API key in a gitignored `.env` file in the repo root (`HARIS_AI_KEY=sk-hr-...`), then run `python src/llm_label.py` to label the train-split articles with every model in `MODELS`, or `python src/llm_label.py <model>` for one model.
+Labels are saved per model in `data/processed/llm_labels/`; if the quota runs out, run it again later and it continues where it stopped.
