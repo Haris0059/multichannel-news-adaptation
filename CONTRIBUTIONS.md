@@ -18,4 +18,6 @@
 - 03.11.2026 - Drafted the labelling rules for fact spans (`docs/labelling_rules.md`, applied with AI assistance)
 
 ## Abdurrahman Beširović
--
+- 06.11.2026 - Wrote the fact normalisation for dates, numbers, names and organisations (`src/normalize.py`, applied with AI assistance)
+- 06.11.2026 - Wrote the fact comparison that labels post facts as correct, changed or added (`src/compare.py`, applied with AI assistance)
+- 06.11.2026 - Wrote the evaluation script for scores, fact change rates and the error list (`src/evaluate.py`, applied with AI assistance)
