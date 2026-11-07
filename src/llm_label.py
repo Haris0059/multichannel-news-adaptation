@@ -93,21 +93,21 @@ def parse_items(raw):
 
 def locate(items, text):
     """Turn {"text", "type"} items into spans with offsets; reject what is not in the text."""
-    spans, rejected, used = [], [], set()
+    spans, rejected, pos = [], [], 0
     for item in items:
         if not isinstance(item, dict) or item.get("type") not in LABELS:
             rejected.append(item)
             continue
         mention = item.get("text") or ""
-        # a repeated mention goes to the next unused occurrence
-        start = text.find(mention) if mention else -1
-        while start in used:
-            start = text.find(mention, start + 1)
-        if start == -1:
+        # a repeated mention gets its own occurrence
+        pattern = rf"(?<!\w){re.escape(mention)}(?!\w)"
+        match = re.compile(pattern).search(text, pos) if mention else None
+        if match is None:
             rejected.append(item)
             continue
-        used.add(start)
+        start = match.start()
         end = start + len(mention)
+        pos = end
         spans.append(
             {"text": mention, "type": item["type"], "start": start, "end": end}
         )
