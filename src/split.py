@@ -19,7 +19,7 @@ def split_slugs(slugs):
 
 
 def main():
-    with IN_PATH.open("r") as f:
+    with IN_PATH.open("r", encoding="utf-8") as f:
         slugs = [json.loads(line)["slug"] for line in f]
 
         train, val, test = split_slugs(slugs)
