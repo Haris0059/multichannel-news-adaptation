@@ -11,12 +11,14 @@ import requests
 API_URL = "https://ai.haris.rip/api/v1/chat/completions"
 API_KEY_ENV = "HARIS_AI_KEY"
 ENV_PATH = Path(".env")
-# the effort level is a suffix on the model name; a GPT model is added later
 MODELS = [
-    "anthropic/claude-opus-5-5-medium",
-    "anthropic/claude-sonnet-5-5-medium",
-    "google/gemini-3.8-flash-medium",
+    "anthropic/claude-opus-5-5",
+    "anthropic/claude-sonnet-5-5",
+    "google/gemini-3.8-flash",
+    "openai/gpt-6.1-sol",
 ]
+# sent as reasoning_effort; medium is the highest level every model accepts
+EFFORT = "medium"
 LABELS = ["PERSON", "ORG", "LOC", "DATE", "TIME", "NUMBER"]
 ARTICLES_PATH = Path("data/processed/cleaned.jsonl")
 SPLIT_PATH = Path("data/split.json")
@@ -24,8 +26,7 @@ RULES_PATH = Path("docs/labelling_rules.md")
 OUT_DIR = Path("data/processed/llm_labels")
 TIMEOUT = 360
 RETRIES = 3
-# the API is rate limited: wait between requests, and longer after an error
-MIN_INTERVAL = 5
+# wait before retrying a failed upstream call
 RETRY_WAIT = 30
 # only the rule sections go into the prompt, not the open questions and normalisation notes
 RULES_END = "\n## Open questions"
@@ -56,20 +57,10 @@ def model_path(model):
     return OUT_DIR / f"{model.replace('/', '__')}.jsonl"
 
 
-last_call = 0.0
-
-
-def wait_turn():
-    global last_call
-    time.sleep(max(0.0, MIN_INTERVAL - (time.monotonic() - last_call)))
-    last_call = time.monotonic()
-
-
 def call_model(model, messages, api_key):
     headers = {"Authorization": f"Bearer {api_key}"}
-    body = {"model": model, "messages": messages}
+    body = {"model": model, "messages": messages, "reasoning_effort": EFFORT}
     for attempt in range(1, RETRIES + 1):
-        wait_turn()
         response = requests.post(API_URL, headers=headers, json=body, timeout=TIMEOUT)
         # a 429 (quota used up) raises below, so main skips to the next model
         if response.status_code in (502, 503) and attempt < RETRIES:
