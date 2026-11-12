@@ -20,4 +20,7 @@
 - 03.11.2026 - Fixed the file encoding in `src/split.py` so it runs on Windows
 
 ## Abdurrahman Beširović
--
+- 06.11.2026 - Wrote the fact normalisation for dates, numbers, names and organisations (`src/normalize.py`, applied with AI assistance)
+- 06.11.2026 - Wrote the fact comparison that labels post facts as correct, changed or added (`src/compare.py`, applied with AI assistance)
+- 06.11.2026 - Wrote the evaluation script for scores, fact change rates and the error list (`src/evaluate.py`, applied with AI assistance)
+- 11.11.2026 - Added tests for normalisation, comparison and evaluation (`tests/test_pipeline.py`, applied with AI assistance)
