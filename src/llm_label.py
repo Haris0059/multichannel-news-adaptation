@@ -17,7 +17,7 @@ MODELS = [
     "anthropic/claude-sonnet-5-5-medium",
     "google/gemini-3.8-flash-medium",
 ]
-LABELS = ["PERSON", "ORG", "DATE", "NUMBER"]
+LABELS = ["PERSON", "ORG", "LOC", "DATE", "TIME", "NUMBER"]
 ARTICLES_PATH = Path("data/processed/cleaned.jsonl")
 SPLIT_PATH = Path("data/split.json")
 RULES_PATH = Path("docs/labelling_rules.md")
