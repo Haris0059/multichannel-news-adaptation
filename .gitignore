@@ -1,5 +1,7 @@
 .venv/
 .env
 data/raw/
-data/processed/
+data/processed/*
+# the hand-labelled test set is committed; the LLM labels were added with git add -f
+!data/processed/test_set.jsonl
 __pycache__/

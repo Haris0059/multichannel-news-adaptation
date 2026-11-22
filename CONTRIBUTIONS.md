@@ -18,6 +18,13 @@
 - 03.11.2026 - Drafted the labelling rules for fact spans (`docs/labelling_rules.md`, applied with AI assistance)
 - 03.11.2026 - Wrote the LLM labelling script for the train-split articles (`src/llm_label.py`, applied with AI assistance)
 - 03.11.2026 - Fixed the file encoding in `src/split.py` so it runs on Windows
+- 07.11.2026 - Fixed `locate()` in `src/llm_label.py` so a short number inside a longer one is not matched
+- 22.11.2026 - Wrote post generation and error injection (`src/generate_posts.py`, `src/inject_errors.py`, applied with AI assistance)
+- 22.11.2026 - Set up test set v1: post selection, Gemini pre-labelling and check sheets, conversion to the evaluation format (`src/make_test_tasks.py`, `src/prefill_test_set.py`, `src/build_test_set.py`, applied with AI assistance)
+- 22.11.2026 - Wrote the rule-based baseline (`src/baseline.py`, applied with AI assistance)
+- 22.11.2026 - Wrote the README pipeline diagram and data section (applied with AI assistance)
+- 22.11.2026 - Built test set v1 (60 posts) with AI pre-labelling and AI correction; team manual check still to do (applied with AI assistance)
+- 22.11.2026 - Ran the baseline and the first evaluation on test set v1 (`results/`)
 
 ## Abdurrahman Beširović
 - 06.11.2026 - Wrote the fact normalisation for dates, numbers, names and organisations (`src/normalize.py`, applied with AI assistance)
