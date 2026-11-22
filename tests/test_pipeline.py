@@ -20,6 +20,10 @@ def span(a, b):
     return {"start": a, "end": b}
 
 
+def clock(start, end=None, open=False):
+    return {"start": start, "end": start if end is None else end, "open": open}
+
+
 NORMALIZE_CASES = [
     # dates from the labelling rules
     ("October 21, 2026", "DATE", "en", one(2026, 10, 21)),
@@ -87,6 +91,34 @@ NORMALIZE_CASES = [
     ("20-30", "NUMBER", "en", None),
     ("mnogo", "NUMBER", "bs", None),
     ("5 studenata", "NUMBER", "bs", None),
+    # times from the labelling rules
+    ("10:00 AM", "TIME", "en", clock(600)),
+    ("17 sati", "TIME", "bs", clock(1020)),
+    ("9:00 do 12:00", "TIME", "bs", clock(540, 720, open=True)),
+    ("10 AM", "TIME", "en", clock(600)),
+    ("10:00", "TIME", "en", clock(600, open=True)),
+    ("10h", "TIME", "bs", clock(600, open=True)),
+    ("5 PM", "TIME", "en", clock(1020)),
+    # times, edge cases
+    ("10:30 p.m.", "TIME", "en", clock(1350)),
+    ("12 AM", "TIME", "en", clock(0)),
+    ("12 PM", "TIME", "en", clock(720)),
+    ("17.00", "TIME", "bs", clock(1020)),
+    ("17:00 h", "TIME", "bs", clock(1020)),
+    ("5 sati", "TIME", "bs", clock(300, open=True)),
+    ("10 časova", "TIME", "bs", clock(600, open=True)),
+    ("10 o'clock", "TIME", "en", clock(600, open=True)),
+    ("9:00–12:00", "TIME", "en", clock(540, 720, open=True)),
+    ("od 9 do 17 sati", "TIME", "bs", clock(540, 1020)),
+    ("9–11 AM", "TIME", "en", clock(540, 660)),
+    ("11 AM - 1 PM", "TIME", "en", clock(660, 780)),
+    ("00:30", "TIME", "bs", clock(30)),
+    ("ujutro", "TIME", "bs", None),
+    ("25:00", "TIME", "bs", None),
+    ("10:75", "TIME", "bs", None),
+    ("13 PM", "TIME", "en", None),
+    ("9-10-11", "TIME", "en", None),
+    ("", "TIME", "en", None),
 ]
 
 SAME_STEM = [
@@ -125,6 +157,26 @@ SAME_ORG = [
     ("IBU Faculty of Economics", "IBU faculty of economics"),
 ]
 
+SAME_LOC = [
+    ("Sarajevo", "Sarajevu"),
+    ("Turkey", "Turske"),
+    ("Turkey", "Türkiye"),
+    ("Bosnia and Herzegovina", "Bosne i Hercegovine"),
+    ("BiH", "Bosna i Hercegovina"),
+    ("BiH", "BiH-u"),
+    ("Europe", "Evropi"),
+    ("Germany", "Njemačkoj"),
+    ("Croatia", "Hrvatskoj"),
+    ("Balkans", "Balkanu"),
+]
+
+DIFFERENT_LOC = [
+    ("Sarajevo", "Mostar"),
+    ("Serbia", "Hrvatska"),
+    ("Turkey", "Turkmenistan"),
+    ("Bosna", "Bosna i Hercegovina"),
+]
+
 
 def stem(text):
     return normalize(text, "PERSON", "bs")["stem"]
@@ -158,6 +210,20 @@ def test_male_and_female_name():
 @pytest.mark.parametrize("a, b", SAME_ORG)
 def test_org_aliases(a, b):
     assert normalize(a, "ORG", "bs")["stem"] == normalize(b, "ORG", "bs")["stem"]
+
+
+def loc_stem(text):
+    return normalize(text, "LOC", "bs")["stem"]
+
+
+@pytest.mark.parametrize("a, b", SAME_LOC)
+def test_loc_aliases(a, b):
+    assert loc_stem(a) == loc_stem(b)
+
+
+@pytest.mark.parametrize("a, b", DIFFERENT_LOC)
+def test_different_places(a, b):
+    assert loc_stem(a) != loc_stem(b)
 
 
 def facts(*items):
@@ -319,6 +385,73 @@ COMPARE_CASES = [
         "en",
         ["added"],
     ),
+    (
+        "bosnian places, all correct",
+        facts(
+            ("Sarajevo", "LOC"),
+            ("Turkey", "LOC"),
+            ("Bosnia and Herzegovina", "LOC"),
+        ),
+        facts(("Sarajevu", "LOC"), ("Turske", "LOC"), ("BiH", "LOC")),
+        "bs",
+        ["correct"] * 3,
+    ),
+    (
+        "misspelled place is changed",
+        facts(("Sarajevo", "LOC")),
+        facts(("Sarejevo", "LOC")),
+        "en",
+        ["changed"],
+    ),
+    (
+        "different place is added",
+        facts(("Sarajevo", "LOC")),
+        facts(("Mostar", "LOC")),
+        "en",
+        ["added"],
+    ),
+    (
+        "same time in 12 and 24 hour forms",
+        facts(("5 PM", "TIME"), ("10:00", "TIME")),
+        facts(("17 sati", "TIME"), ("10 sati", "TIME")),
+        "bs",
+        ["correct", "correct"],
+    ),
+    (
+        "open time matches the other half of the day",
+        facts(("5 PM", "TIME")),
+        facts(("5 sati", "TIME")),
+        "bs",
+        ["correct"],
+    ),
+    (
+        "changed time",
+        facts(("10:00", "TIME")),
+        facts(("11:00", "TIME")),
+        "en",
+        ["changed"],
+    ),
+    (
+        "time range with the same ends is correct",
+        facts(("9:00–12:00", "TIME")),
+        facts(("od 9 do 12 sati", "TIME")),
+        "bs",
+        ["correct"],
+    ),
+    (
+        "time range with a changed end is changed",
+        facts(("9:00–12:00", "TIME")),
+        facts(("9:00 do 13:00", "TIME")),
+        "bs",
+        ["changed"],
+    ),
+    (
+        "time is not a date",
+        facts(("10:00", "TIME")),
+        facts(("10.10.", "DATE")),
+        "bs",
+        ["added"],
+    ),
     ("empty post", ARTICLE, [], "bs", []),
     ("empty source", [], facts(("IBU", "ORG")), "bs", ["added"]),
 ]
@@ -331,6 +464,44 @@ COMPARE_CASES = [
 )
 def test_compare_facts(source, post, lang, expected):
     assert [r["label"] for r in compare_facts(source, post, lang)] == expected
+
+
+BOSNIAN_SOURCE_CASES = [
+    (
+        "english post of a bosnian article, all correct",
+        facts(
+            ("1.500", "NUMBER"),
+            ("Sarajevu", "LOC"),
+            ("Amrom Hodžić", "PERSON"),
+            ("21. oktobra 2026.", "DATE"),
+        ),
+        facts(
+            ("1,500", "NUMBER"),
+            ("Sarajevo", "LOC"),
+            ("Amra Hodžić", "PERSON"),
+            ("October 21, 2026", "DATE"),
+        ),
+        "en",
+        ["correct"] * 4,
+    ),
+    (
+        "bosnian post of a bosnian article, changed number",
+        facts(("1.500", "NUMBER")),
+        facts(("1.600", "NUMBER")),
+        "bs",
+        ["changed"],
+    ),
+]
+
+
+@pytest.mark.parametrize(
+    "source, post, lang, expected",
+    [case[1:] for case in BOSNIAN_SOURCE_CASES],
+    ids=[case[0] for case in BOSNIAN_SOURCE_CASES],
+)
+def test_compare_bosnian_source(source, post, lang, expected):
+    labels = [r["label"] for r in compare_facts(source, post, lang, source_lang="bs")]
+    assert labels == expected
 
 
 def gold(start, end, fact_type, label):
