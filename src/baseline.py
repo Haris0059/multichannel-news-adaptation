@@ -130,8 +130,10 @@ def extract(text):
         # a single letter ("U", "A") is a word, not a name
         if not words or (len(words) == 1 and len(words[0]) < 2):
             continue
+        # after punctuation, an emoji, ** or a line break a capital letter starts a
+        # sentence; only a letter, digit or comma before it means mid-sentence
         before = text[:start].rstrip()
-        sentence_start = not before or before[-1] in ".!?:\n"
+        sentence_start = not before or not (before[-1].isalnum() or before[-1] == ",")
         fact_type = name_type(words, sentence_start)
         span = {
             "text": text[start : m.end()],
