@@ -1,0 +1,134 @@
+method,id,channel,lang,type,text,gold_label,pred_label,outcome
+baseline,a-new-chapter-for-the-ibu-library__instagram__bs__gemini__fact_rule,instagram,bs,PERSON,Hercegovine,,changed,fp
+baseline,a-new-chapter-for-the-ibu-library__instagram__bs__gemini__fact_rule,instagram,bs,PERSON,Nacionalnom,,changed,fp
+baseline,a-new-chapter-for-the-ibu-library__instagram__bs__gemini__fact_rule,instagram,bs,PERSON,Hercegovine,,changed,fp
+baseline,a-new-chapter-for-the-ibu-library__linkedin__bs__weak__no_rule,linkedin,bs,ORG,IBU Biblioteci,,changed,fp
+baseline,a-new-chapter-for-the-ibu-library__linkedin__bs__weak__no_rule,linkedin,bs,ORG,IBU Biblioteka,,added,fp
+baseline,a-new-chapter-for-the-ibu-library__linkedin__bs__weak__no_rule,linkedin,bs,PERSON,Hercegovine,,changed,fp
+baseline,a-new-chapter-for-the-ibu-library__linkedin__bs__weak__no_rule,linkedin,bs,PERSON,Nacionalnom,,changed,fp
+baseline,a-new-chapter-for-the-ibu-library__linkedin__bs__weak__no_rule,linkedin,bs,ORG,Univerzitetskom,,changed,fp
+baseline,a-new-chapter-for-the-ibu-library__linkedin__bs__weak__no_rule,linkedin,bs,PERSON,BiH,,added,fp
+baseline,academic-preparation-week-2025__instagram__bs__gemini__no_rule,instagram,bs,PERSON,Sedmice,,added,fp
+baseline,academic-preparation-week-2025__linkedin__bs__gemini__fact_rule,linkedin,bs,PERSON,Sedmica,,added,fp
+baseline,academic-preparation-week-2025__linkedin__bs__gemini__fact_rule,linkedin,bs,PERSON,IBU-a,,added,fp
+baseline,article-4__instagram__bs__gemini__fact_rule__inj,instagram,bs,PERSON,Filozofskog,,added,fp
+baseline,article-4__instagram__bs__gemini__fact_rule__inj,instagram,bs,ORG,TPO Fondacija,,changed,fp
+baseline,article-4__instagram__bs__gemini__fact_rule__inj,instagram,bs,PERSON,Britanske,,added,fp
+baseline,article-4__instagram__bs__gemini__fact_rule__inj,instagram,bs,PERSON,Hercegovini,,changed,fp
+baseline,article-4__instagram__bs__weak__no_rule,instagram,bs,PERSON,Na IBU-u,,added,fp
+baseline,article-5__linkedin__bs__gemini__fact_rule__inj,linkedin,bs,PERSON,International Burch Univorsity,,added,fp
+baseline,article-5__linkedin__bs__gemini__fact_rule__inj,linkedin,bs,ORG,International Burch Univorsity,changed,,fn
+baseline,article-8__instagram__en__gemini__fact_rule__inj,instagram,en,PERSON,Charting the Path Forwird,,changed,fp
+baseline,article-8__linkedin__en__weak__no_rule,linkedin,en,PERSON,Advancing Gender Equality,,changed,fp
+baseline,article-8__linkedin__en__weak__no_rule,linkedin,en,PERSON,IBU’s Commitment,,added,fp
+baseline,article-8__linkedin__en__weak__no_rule,linkedin,en,PERSON,Progress,,added,fp
+baseline,article-8__linkedin__en__weak__no_rule,linkedin,en,PERSON,Gender Issues Advisory Board,,changed,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__instagram__bs__gemini__fact_rule,instagram,bs,PERSON,Francuskoj,,changed,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__instagram__bs__gemini__fact_rule,instagram,bs,PERSON,Španiji,,added,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__instagram__bs__gemini__fact_rule,instagram,bs,PERSON,Bugarskoj,,changed,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__instagram__bs__gemini__fact_rule,instagram,bs,NUMBER,23,,changed,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__instagram__bs__gemini__fact_rule,instagram,bs,DATE,27. oktobra,,changed,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__instagram__bs__gemini__fact_rule,instagram,bs,ORG,International Staff Week na University of Valladolid,,added,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__instagram__bs__gemini__fact_rule,instagram,bs,PERSON,U Bugarskoj,,added,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__instagram__bs__gemini__fact_rule,instagram,bs,PERSON,International Staff Week na St,,changed,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__instagram__bs__gemini__fact_rule,instagram,bs,PERSON,Mirdin Zilić,,added,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__instagram__en__gemini__fact_rule__inj,instagram,en,PERSON,Europe,,changed,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__instagram__en__gemini__fact_rule__inj,instagram,en,PERSON,Universety of Valladolid,,added,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__instagram__en__gemini__fact_rule__inj,instagram,en,PERSON,Mirdin Zilić,,added,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__instagram__en__gemini__fact_rule__inj,instagram,en,ORG,Universety of Valladolid,changed,,fn
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__instagram__en__weak__no_rule,instagram,en,ORG,AI,,added,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__linkedin__bs__weak__no_rule,linkedin,bs,PERSON,Autunski Erasmus,,added,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__linkedin__bs__weak__no_rule,linkedin,bs,PERSON,Španija,,added,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__linkedin__bs__weak__no_rule,linkedin,bs,PERSON,Bugarska,,changed,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__linkedin__bs__weak__no_rule,linkedin,bs,NUMBER,23,,changed,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__linkedin__bs__weak__no_rule,linkedin,bs,DATE,27. oktobra,,changed,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__linkedin__bs__weak__no_rule,linkedin,bs,PERSON,Odjela,,added,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__linkedin__bs__weak__no_rule,linkedin,bs,PERSON,Katolički,,added,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__linkedin__bs__weak__no_rule,linkedin,bs,PERSON,Lilleu,,added,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__linkedin__bs__weak__no_rule,linkedin,bs,PERSON,Koordinatorica Erasmus,,added,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__linkedin__bs__weak__no_rule,linkedin,bs,NUMBER,9,,added,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__linkedin__bs__weak__no_rule,linkedin,bs,ORG,Univerziteta u Valladolidu,,changed,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__linkedin__bs__weak__no_rule,linkedin,bs,PERSON,Međunarodnom,,added,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__linkedin__bs__weak__no_rule,linkedin,bs,ORG,Univerziteta Sv,,added,fp
+baseline,autumn-erasmus-staff-mobilities-france-spain-and-bulgaria__linkedin__bs__weak__no_rule,linkedin,bs,PERSON,Metoda u Velikom Tarnovu,,added,fp
+baseline,bridging-the-gap-career-day-2026-__instagram__bs__gemini__no_rule,instagram,bs,PERSON,Career Day na Burch,,changed,fp
+baseline,fourth-kreativ-fest-ibu__instagram__bs__gemini__no_rule,instagram,bs,PERSON,Kreativ Festa na Burch,,changed,fp
+baseline,freshers-orientation-day-re__website__bs__gemini__no_rule,website,bs,ORG,Na International Burch University,,added,fp
+baseline,freshers-orientation-day-re__website__bs__gemini__no_rule,website,bs,PERSON,Dan,,changed,fp
+baseline,future-leaders-summit-2024__instagram__bs__gemini__fact_rule__inj,instagram,bs,DATE,2023,,changed,fp
+baseline,future-leaders-summit-2024__instagram__bs__weak__no_rule,instagram,bs,PERSON,IBU-u,,added,fp
+baseline,future-leaders-summit-2024__instagram__en__gemini__no_rule,instagram,en,PERSON,Day,,added,fp
+baseline,future-leaders-summit-2024__instagram__en__gemini__no_rule,instagram,en,NUMBER,2,,changed,fp
+baseline,future-leaders-summit-2024__instagram__en__weak__no_rule,instagram,en,NUMBER,2,,changed,fp
+baseline,future-leaders-summit-2024__linkedin__bs__gemini__fact_rule,linkedin,bs,PERSON,Hercegovini,,changed,fp
+baseline,gender-equality-in-bosnia-s-construction-industry__linkedin__bs__gemini__no_rule,linkedin,bs,PERSON,Na Internacionalnom Burch,,added,fp
+baseline,gender-equality-in-bosnia-s-construction-industry__linkedin__bs__gemini__no_rule,linkedin,bs,PERSON,Hercegovini,,changed,fp
+baseline,gender-equality-in-bosnia-s-construction-industry__linkedin__bs__gemini__no_rule,linkedin,bs,PERSON,BiH,,added,fp
+baseline,gender-equality-in-bosnia-s-construction-industry__website__bs__gemini__fact_rule,website,bs,ORG,Na International Burch University,,added,fp
+baseline,gender-equality-in-bosnia-s-construction-industry__website__bs__gemini__fact_rule,website,bs,ORG,Odsjeka,,added,fp
+baseline,gender-equality-in-bosnia-s-construction-industry__website__bs__weak__no_rule,website,bs,PERSON,Na IBU-u,,added,fp
+baseline,gender-equality-in-bosnia-s-construction-industry__website__bs__weak__no_rule,website,bs,PERSON,Arhitektonskog,,changed,fp
+baseline,gender-equality-in-bosnia-s-construction-industry__website__bs__weak__no_rule,website,bs,PERSON,Građevinskog,,added,fp
+baseline,gender-equality-in-bosnia-s-construction-industry__website__bs__weak__no_rule,website,bs,ORG,Arhitektonskog i Građevinskog fakulteta,changed,,fn
+baseline,ibu-ceeisa-2026__linkedin__bs__gemini__fact_rule__inj,linkedin,bs,PERSON,Ontological Sicurity,,changed,fp
+baseline,ibu-ceeisa-2026__linkedin__bs__gemini__fact_rule__inj,linkedin,bs,PERSON,Evrope,,changed,fp
+baseline,ibu-ceeisa-2026__linkedin__bs__weak__no_rule,linkedin,bs,ORG,Fakultetom,,changed,fp
+baseline,ibu-ceeisa-2026__website__bs__gemini__fact_rule__inj,website,bs,PERSON,Cantral,,added,fp
+baseline,ibu-ceeisa-2026__website__bs__gemini__fact_rule__inj,website,bs,ORG,Cantral and East European International Studies Association Conference,changed,,fn
+baseline,instream-project__linkedin__bs__gemini__no_rule,linkedin,bs,PERSON,Internacionalni,,added,fp
+baseline,instream-project__linkedin__bs__gemini__no_rule,linkedin,bs,PERSON,Evropske,,added,fp
+baseline,instream-project__linkedin__bs__gemini__no_rule,linkedin,bs,ORG,IPA,,added,fp
+baseline,instream-project__linkedin__bs__gemini__no_rule,linkedin,bs,PERSON,Hercegovini,,changed,fp
+baseline,instream-project__linkedin__bs__gemini__no_rule,linkedin,bs,ORG,Univerzitetom,,changed,fp
+baseline,instream-project__linkedin__bs__gemini__no_rule,linkedin,bs,ORG,Univerzitetom u Bihaću,,changed,fp
+baseline,instream-project__linkedin__bs__gemini__no_rule,linkedin,bs,ORG,Univerzitetom u Istočnom Sarajevu,,added,fp
+baseline,instream-project__linkedin__bs__gemini__no_rule,linkedin,bs,PERSON,Hercegovina,,changed,fp
+baseline,instream-project__linkedin__bs__gemini__no_rule,linkedin,bs,ORG,Internacionalni burč univerzitet,changed,,fn
+baseline,new-cost-action__linkedin__bs__gemini__no_rule,linkedin,bs,PERSON,Hercegovine,,changed,fp
+baseline,new-cost-action__linkedin__bs__gemini__no_rule,linkedin,bs,ORG,Odsjeka,,added,fp
+baseline,new-cost-action__linkedin__bs__gemini__no_rule,linkedin,bs,PERSON,Briselu,,changed,fp
+baseline,pripremna-nastava-za-prijemni-ispit-i-dani-otvorenih-vrata__website__en__gemini__no_rule,website,en,ORG,International Burch University,,changed,fp
+baseline,pripremna-nastava-za-prijemni-ispit-i-dani-otvorenih-vrata__website__en__gemini__no_rule,website,en,PERSON,Open Days,,added,fp
+baseline,pripremna-nastava-za-prijemni-ispit-i-dani-otvorenih-vrata__website__en__gemini__no_rule,website,en,PERSON,Google Meet,,added,fp
+baseline,pripremna-nastava-za-prijemni-ispit-i-dani-otvorenih-vrata__website__en__weak__no_rule,website,en,ORG,IBU Offers Preparatory Sessions,,added,fp
+baseline,pripremna-nastava-za-prijemni-ispit-i-dani-otvorenih-vrata__website__en__weak__no_rule,website,en,PERSON,Open Days for Prospective Students,,added,fp
+baseline,pripremna-nastava-za-prijemni-ispit-i-dani-otvorenih-vrata__website__en__weak__no_rule,website,en,ORG,International Burch University,,changed,fp
+baseline,pripremna-nastava-za-prijemni-ispit-i-dani-otvorenih-vrata__website__en__weak__no_rule,website,en,ORG,IBU,,changed,fp
+baseline,pripremna-nastava-za-prijemni-ispit-i-dani-otvorenih-vrata__website__en__weak__no_rule,website,en,PERSON,Open Days,,added,fp
+baseline,pripremna-nastava-za-prijemni-ispit-i-dani-otvorenih-vrata__website__en__weak__no_rule,website,en,NUMBER,21,,changed,fp
+baseline,pripremna-nastava-za-prijemni-ispit-i-dani-otvorenih-vrata__website__en__weak__no_rule,website,en,ORG,IBU,,changed,fp
+baseline,sfera-2026-ibu__linkedin__bs__gemini__fact_rule__inj,linkedin,bs,PERSON,Hotelu Hills u Sarajevu,,added,fp
+baseline,sfera-2026-ibu__linkedin__bs__gemini__fact_rule__inj,linkedin,bs,ORG,Odsjeka,,added,fp
+baseline,sfera-2026-ibu__linkedin__bs__gemini__fact_rule__inj,linkedin,bs,PERSON,IBU-a,,added,fp
+baseline,sfera-2026-ibu__linkedin__bs__gemini__fact_rule__inj,linkedin,bs,PERSON,IBU-a,,added,fp
+baseline,sfera-2026-ibu__linkedin__bs__gemini__fact_rule__inj,linkedin,bs,PERSON,Arhitektura,,changed,fp
+baseline,sfera-2026-ibu__linkedin__bs__gemini__fact_rule__inj,linkedin,bs,PERSON,Građevinarstvo,,added,fp
+baseline,sfera-2026-ibu__linkedin__en__gemini__fact_rule__inj,linkedin,en,PERSON,Civil Enganeering,,changed,fp
+baseline,sfera-2026-ibu__linkedin__en__weak__no_rule,linkedin,en,PERSON,Mark Your Calendars,,added,fp
+baseline,sfera-2026-ibu__linkedin__en__weak__no_rule,linkedin,en,ORG,Head of IBU’s Department of Architecture,,changed,fp
+baseline,sfera-2026-ibu__website__bs__weak__no_rule,website,bs,PERSON,Asoc,,added,fp
+baseline,sfera-2026-ibu__website__bs__weak__no_rule,website,bs,PERSON,Odjela,,added,fp
+baseline,sfera-2026-ibu__website__bs__weak__no_rule,website,bs,ORG,Studenti IBU,,added,fp
+baseline,sfera-2026-ibu__website__en__weak__no_rule,website,en,PERSON,Host,,changed,fp
+baseline,spring-erasmus-mobilities-germany-france-lithuania-poland__linkedin__bs__gemini__fact_rule,linkedin,bs,ORG,Osoblje International Burch University,,added,fp
+baseline,spring-erasmus-mobilities-germany-france-lithuania-poland__linkedin__bs__gemini__fact_rule,linkedin,bs,PERSON,IBU-a,,changed,fp
+baseline,spring-erasmus-mobilities-germany-france-lithuania-poland__linkedin__bs__gemini__fact_rule,linkedin,bs,PERSON,Evrope,,changed,fp
+baseline,spring-erasmus-mobilities-germany-france-lithuania-poland__linkedin__bs__gemini__fact_rule,linkedin,bs,ORG,Philipps University of Marburg u Njemačkoj,,changed,fp
+baseline,spring-erasmus-mobilities-germany-france-lithuania-poland__linkedin__bs__gemini__fact_rule,linkedin,bs,PERSON,Lille u Francuskoj,,added,fp
+baseline,spring-erasmus-mobilities-germany-france-lithuania-poland__linkedin__bs__gemini__fact_rule,linkedin,bs,ORG,Vytautas Magnus University u Litvaniji,,changed,fp
+baseline,spring-erasmus-mobilities-germany-france-lithuania-poland__linkedin__bs__gemini__fact_rule,linkedin,bs,ORG,WSPA Lublin u Poljskoj,,changed,fp
+baseline,spring-erasmus-mobilities-germany-france-lithuania-poland__linkedin__en__gemini__fact_rule__inj,linkedin,en,PERSON,At Vytautas Magnus Uneversity,,added,fp
+baseline,spring-erasmus-mobilities-germany-france-lithuania-poland__linkedin__en__gemini__fact_rule__inj,linkedin,en,ORG,Vytautas Magnus Uneversity,changed,,fn
+baseline,third-international-erasmus-week-at-ibu__website__bs__gemini__fact_rule__inj,website,bs,NUMBER,17,,changed,fp
+baseline,third-international-erasmus-week-at-ibu__website__bs__gemini__fact_rule__inj,website,bs,PERSON,Italije,,changed,fp
+baseline,third-international-erasmus-week-at-ibu__website__bs__gemini__fact_rule__inj,website,bs,PERSON,Španije,,added,fp
+baseline,third-international-erasmus-week-at-ibu__website__bs__gemini__fact_rule__inj,website,bs,PERSON,Češke,,added,fp
+baseline,third-international-erasmus-week-at-ibu__website__bs__gemini__fact_rule__inj,website,bs,PERSON,Bugarske,,changed,fp
+baseline,third-international-erasmus-week-at-ibu__website__bs__gemini__fact_rule__inj,website,bs,PERSON,Rumunije,,added,fp
+baseline,third-international-erasmus-week-at-ibu__website__bs__gemini__fact_rule__inj,website,bs,PERSON,Hrvatske,,added,fp
+baseline,third-international-erasmus-week-at-ibu__website__bs__gemini__fact_rule__inj,website,bs,PERSON,Latvije,,changed,fp
+baseline,third-international-erasmus-week-at-ibu__website__bs__gemini__fact_rule__inj,website,bs,PERSON,Njemačke,,added,fp
+baseline,third-international-erasmus-week-at-ibu__website__bs__gemini__no_rule,website,bs,PERSON,Na Internacionalnom Burch,,added,fp
+baseline,third-international-erasmus-week-at-ibu__website__bs__gemini__no_rule,website,bs,PERSON,Međunarodna Erasmus,,changed,fp
+baseline,third-international-erasmus-week-at-ibu__website__bs__gemini__no_rule,website,bs,NUMBER,osam,,changed,fp
+baseline,third-international-erasmus-week-at-ibu__website__bs__gemini__no_rule,website,bs,PERSON,Ured,,added,fp

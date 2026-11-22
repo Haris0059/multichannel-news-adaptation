@@ -53,7 +53,7 @@ flowchart TD
 | LLM labels for NER training | `src/llm_label.py` | Fadil | Run on the train split by Haris (22.11); the Gemini file is empty |
 | NER fine-tuning | | Fadil | To do |
 | Post generation and injected errors | `src/generate_posts.py`, `src/inject_errors.py` | Haris, written by Fadil | Written 22.11, tested with a fake API, not run yet |
-| Test set | `src/make_test_tasks.py`, `src/prefill_test_set.py`, `src/build_test_set.py` → `data/processed/test_set.jsonl` | Haris, labelled by all | 60 posts pre-labelled by Gemini 22.11; team check to do |
+| Test set | `src/make_test_tasks.py`, `src/prefill_test_set.py`, `src/build_test_set.py` → `data/processed/test_set.jsonl` | Haris, labelled by all | v1: 60 posts, pre-labelled by Gemini and corrected by Claude 22.11; team check to do |
 | Baseline | `src/baseline.py` | Haris, written by Fadil | Written 22.11, not run on real posts |
 | Normalisation, comparison, evaluation | `src/normalize.py`, `src/compare.py`, `src/evaluate.py` | Abdurrahman | Done, 170 tests |
 | Annotation, cross-review, error analysis | | All | To do |

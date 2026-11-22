@@ -85,7 +85,8 @@ def main():
                     "model": post["model"],
                     "prompt": post["prompt"],
                     "injected": post.get("injected", False),
-                    "annotator": path.stem,
+                    # the check sheet the post came from, not proof that this person labelled it
+                    "sheet": path.stem,
                     "spans": spans,
                 }
             )

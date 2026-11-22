@@ -42,7 +42,7 @@ flowchart LR
     classDef ext fill:#eeeeee,stroke:#757575,color:#000
 ```
 
-NER fine-tuning is the main method and is not built yet. The test set is pre-labelled by Gemini 3.8 Flash and every fact is then checked and corrected by a team member.
+NER fine-tuning is the main method and is not built yet. Test set v1 (60 posts) is pre-labelled by Gemini 3.8 Flash and corrected by Claude with decisions D1-D4 from `docs/labelling_rules.md`; the team has not checked it by hand yet, so first results are provisional.
 
 Stages, owners and status are in `docs/pipeline.md`.
 
