@@ -18,6 +18,8 @@
 - 03.11.2026 - Drafted the labelling rules for fact spans (`docs/labelling_rules.md`, applied with AI assistance)
 - 03.11.2026 - Wrote the LLM labelling script for the train-split articles (`src/llm_label.py`, applied with AI assistance)
 - 03.11.2026 - Fixed the file encoding in `src/split.py` so it runs on Windows
+- 07.11.2026 - Fixed `locate()` in `src/llm_label.py` so a short number inside a longer one is not matched
+- 22.11.2026 - Wrote post generation and error injection (`src/generate_posts.py`, `src/inject_errors.py`, applied with AI assistance)
 
 ## Abdurrahman Beširović
 - 06.11.2026 - Wrote the fact normalisation for dates, numbers, names and organisations (`src/normalize.py`, applied with AI assistance)
