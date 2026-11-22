@@ -126,6 +126,19 @@ Croatian or Serbian month names in generated posts still count as DATE: `[21. li
 | `The event took place at IBU.` | `[IBU]ORG`. An organisation stays ORG even when it is the venue. |
 | `21. oktobra u 10 sati` | `[21. oktobra]DATE u [10 sati]TIME`, two spans |
 
+## Decisions for test set v1 (22.11.2026)
+
+These were applied to test set v1. They are defaults until the whole team confirms them.
+
+| # | Case | Decision | Example |
+| --- | --- | --- | --- |
+| D1 | Years inside event names | Not labelled, like years inside other names | *Future Leaders Summit 2024*, *2026 CEEISA Conference* |
+| D2 | Projects, programmes, events and plans | Not labelled (answers open question 1) | *UNIGEM*, *INSTREAM*, *ICESOS*, *COST Action*, *Gender Action Plan* |
+| D3 | Compound words with a number | Not labelled (G2 allows only whole words) | *petodnevni*, *trogodišnji* |
+| D4 | IBU's own name when the article does not repeat it | Always `correct` | *IBU* in a post about a staff mobility |
+
+A month on its own, or a month range without a day or year, is not a DATE (*February*, *March to April*).
+
 ## Open questions
 
 Decide these before the agreement round. Adding a type later means relabelling everything.
