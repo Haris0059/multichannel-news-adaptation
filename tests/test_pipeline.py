@@ -466,6 +466,44 @@ def test_compare_facts(source, post, lang, expected):
     assert [r["label"] for r in compare_facts(source, post, lang)] == expected
 
 
+BOSNIAN_SOURCE_CASES = [
+    (
+        "english post of a bosnian article, all correct",
+        facts(
+            ("1.500", "NUMBER"),
+            ("Sarajevu", "LOC"),
+            ("Amrom Hodžić", "PERSON"),
+            ("21. oktobra 2026.", "DATE"),
+        ),
+        facts(
+            ("1,500", "NUMBER"),
+            ("Sarajevo", "LOC"),
+            ("Amra Hodžić", "PERSON"),
+            ("October 21, 2026", "DATE"),
+        ),
+        "en",
+        ["correct"] * 4,
+    ),
+    (
+        "bosnian post of a bosnian article, changed number",
+        facts(("1.500", "NUMBER")),
+        facts(("1.600", "NUMBER")),
+        "bs",
+        ["changed"],
+    ),
+]
+
+
+@pytest.mark.parametrize(
+    "source, post, lang, expected",
+    [case[1:] for case in BOSNIAN_SOURCE_CASES],
+    ids=[case[0] for case in BOSNIAN_SOURCE_CASES],
+)
+def test_compare_bosnian_source(source, post, lang, expected):
+    labels = [r["label"] for r in compare_facts(source, post, lang, source_lang="bs")]
+    assert labels == expected
+
+
 def gold(start, end, fact_type, label):
     return {
         "text": f"s{start}",

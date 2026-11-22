@@ -2,7 +2,6 @@ from difflib import SequenceMatcher
 
 from normalize import normalize
 
-SOURCE_LANG = "en"
 MIN_CHANGED_SIMILARITY = {
     "PERSON": 0.6,
     "ORG": 0.6,
@@ -91,9 +90,11 @@ def labelled(post, label, source=None):
     return {**post, "label": label, "source": source["text"] if source else None}
 
 
-def compare_facts(source_facts, post_facts, post_lang):
-    key = "exact" if post_lang == "en" else "stem"
-    sources = prepare(source_facts, SOURCE_LANG)
+# Most IBU articles are English, but a few are Bosnian. Inflection is only a change
+# when both sides are English; any Bosnian side compares stems.
+def compare_facts(source_facts, post_facts, post_lang, source_lang="en"):
+    key = "exact" if post_lang == source_lang == "en" else "stem"
+    sources = prepare(source_facts, source_lang)
     posts = prepare(post_facts, post_lang)
     results = [None] * len(posts)
 
