@@ -90,6 +90,28 @@ ORG_ALIASES = {
     "eu": ["EU", "European Union", "Evropska unija", "Europska unija"],
 }
 
+# Cities need no entry: their Bosnian forms stem to the English name (Sarajevu).
+LOC_ALIASES = {
+    "bih": [
+        "BiH",
+        "BH",
+        "Bosnia and Herzegovina",
+        "Bosnia & Herzegovina",
+        "Bosna i Hercegovina",
+    ],
+    "turkey": ["Turkey", "Türkiye", "Turkiye", "Turska"],
+    "croatia": ["Croatia", "Hrvatska"],
+    "serbia": ["Serbia", "Srbija"],
+    "germany": ["Germany", "Njemačka"],
+    "europe": ["Europe", "Evropa", "Europa"],
+    "balkans": ["Balkans", "Balkan"],
+}
+
+TIME_PART = re.compile(
+    r"(\d{1,2})(?:[:.](\d{2}))?\s*(a\.?m\.?|p\.?m\.?)?"
+    r"\s*(?:h|hrs|sat[ai]?|casova|casa|o'?clock)?\.?"
+)
+
 
 def fold(text):
     return text.lower().translate(FOLD)
@@ -239,18 +261,70 @@ def name_forms(text):
     return {"exact": exact, "stem": " ".join(stem_word(w) for w in exact.split())}
 
 
-ORG_IDS = {
-    name_forms(alias)["stem"]: org_id
-    for org_id, aliases in ORG_ALIASES.items()
-    for alias in aliases
-}
+def alias_ids(table):
+    return {
+        name_forms(alias)["stem"]: alias_id
+        for alias_id, aliases in table.items()
+        for alias in aliases
+    }
+
+
+ORG_IDS = alias_ids(ORG_ALIASES)
+LOC_IDS = alias_ids(LOC_ALIASES)
 
 
 def normalize_org(text):
-    text = re.sub(r"\b([A-ZČĆŠŽĐ]{2,})-[a-zčćšžđ]+\b", r"\1", text)
+    return normalize_alias(text, ORG_IDS)
+
+
+def normalize_loc(text):
+    return normalize_alias(text, LOC_IDS)
+
+
+# A case ending after an abbreviation is hyphenated (IBU-a, BiH-u).
+def normalize_alias(text, ids):
+    text = re.sub(
+        r"\b([A-ZČĆŠŽĐ][A-Za-zČĆŠŽĐčćšžđ]*[A-ZČĆŠŽĐ])-[a-zčćšžđ]+\b", r"\1", text
+    )
     forms = name_forms(text)
-    org_id = ORG_IDS.get(forms["stem"])
-    return {"exact": org_id, "stem": org_id} if org_id else forms
+    alias_id = ids.get(forms["stem"])
+    return {"exact": alias_id, "stem": alias_id} if alias_id else forms
+
+
+def parse_time_part(text):
+    match = TIME_PART.fullmatch(text.strip())
+    if not match:
+        return None
+    hour, minute = int(match[1]), int(match[2] or 0)
+    meridiem = match[3][0] if match[3] else None
+    return (hour, minute, meridiem) if minute < 60 else None
+
+
+# "open" marks a time with no AM/PM and an hour of 1 to 12, which can mean either
+# half of the day: "5 sati" is usually 17:00. Compare lets these shift by 12 hours.
+def normalize_time(text):
+    text = re.sub(r"^(?:od|from)\s+", "", fold(text).strip())
+    parts = re.split(r"\s*[-–—]\s*|\s+(?:do|to|until)\s+", text)
+    if len(parts) > 2:
+        return None
+    parsed = [parse_time_part(part) for part in parts]
+    if None in parsed:
+        return None
+
+    # A marker on the end time covers the start too: "9-11 AM".
+    last_meridiem = parsed[-1][2]
+    minutes, open_hours = [], []
+    for hour, minute, meridiem in parsed:
+        meridiem = meridiem or last_meridiem
+        if meridiem:
+            if not 1 <= hour <= 12:
+                return None
+            hour = hour % 12 + (12 if meridiem == "p" else 0)
+        elif hour > 23:
+            return None
+        minutes.append(hour * 60 + minute)
+        open_hours.append(meridiem is None and 1 <= hour <= 12)
+    return {"start": minutes[0], "end": minutes[-1], "open": all(open_hours)}
 
 
 def normalize(text, fact_type, lang):
@@ -262,4 +336,8 @@ def normalize(text, fact_type, lang):
         return name_forms(text)
     if fact_type == "ORG":
         return normalize_org(text)
+    if fact_type == "LOC":
+        return normalize_loc(text)
+    if fact_type == "TIME":
+        return normalize_time(text)
     raise ValueError(f"unknown fact type: {fact_type}")

@@ -3,7 +3,17 @@ from difflib import SequenceMatcher
 from normalize import normalize
 
 SOURCE_LANG = "en"
-MIN_CHANGED_SIMILARITY = {"PERSON": 0.6, "ORG": 0.6, "DATE": 0, "NUMBER": 0}
+MIN_CHANGED_SIMILARITY = {
+    "PERSON": 0.6,
+    "ORG": 0.6,
+    "LOC": 0.6,
+    "DATE": 0,
+    "TIME": 0,
+    "NUMBER": 0,
+}
+NAME_TYPES = ("PERSON", "ORG", "LOC")
+DAY = 24 * 60
+HALF_DAY = 12 * 60
 
 
 def prepare(facts, lang):
@@ -19,6 +29,21 @@ def date_part_matches(post, source):
     return year_ok and rest_ok and shared
 
 
+# An open time (no AM/PM, hour 1 to 12) may be 12 hours off: "5 sati" is 17:00.
+def time_matches(post, source):
+    diffs = {(post[k] - source[k]) % DAY for k in ("start", "end")}
+    shifted = (post["open"] or source["open"]) and diffs == {HALF_DAY}
+    return diffs == {0} or shifted
+
+
+def time_similarity(post, source):
+    diff = (post["start"] - source["start"]) % DAY
+    diff = min(diff, DAY - diff)
+    if post["open"] or source["open"]:
+        diff = min(diff, HALF_DAY - diff)
+    return 1 - diff / HALF_DAY
+
+
 def matches(post, source, key):
     if post["type"] != source["type"]:
         return False
@@ -30,6 +55,8 @@ def matches(post, source, key):
         return date_part_matches(a["start"], b["start"]) and date_part_matches(
             a["end"], b["end"]
         )
+    if post["type"] == "TIME":
+        return time_matches(a, b)
     if post["type"] == "NUMBER":
         return a == b
     return set(a[key].split()) <= set(b[key].split())
@@ -41,6 +68,8 @@ def similarity(post, source, key):
         return 0
     if post["type"] == "DATE":
         return sum(x == y for x, y in zip(a["start"], b["start"]) if x is not None) / 3
+    if post["type"] == "TIME":
+        return time_similarity(a, b)
     if post["type"] == "NUMBER":
         return 1 - abs(a - b) / max(a, b, 1)
 
@@ -55,7 +84,7 @@ def similarity(post, source, key):
 def identity(fact, key):
     if fact["value"] is None:
         return fact["text"].strip().lower()
-    return fact["value"][key] if fact["type"] in ("PERSON", "ORG") else fact["value"]
+    return fact["value"][key] if fact["type"] in NAME_TYPES else fact["value"]
 
 
 def labelled(post, label, source=None):
