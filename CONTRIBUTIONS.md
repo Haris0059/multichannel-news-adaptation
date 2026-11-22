@@ -26,3 +26,4 @@
 - 11.11.2026 - Added tests for normalisation, comparison and evaluation (`tests/test_pipeline.py`, applied with AI assistance)
 - 22.11.2026 - Added LOC and TIME to the fact normalisation and comparison (`src/normalize.py`, `src/compare.py`, applied with AI assistance)
 - 22.11.2026 - Made the comparison take the source article's language, for the Bosnian articles (`src/compare.py`, applied with AI assistance)
+- 22.11.2026 - Drafted the pipeline diagram (`docs/pipeline.md`, applied with AI assistance)
